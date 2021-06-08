@@ -36,7 +36,7 @@ public class Menu {
 		int selectedNumber = 0;
 		boolean isFirstTry = true;
 		while (selectedNumber <= 0 || selectedNumber > numOptions) {
-			if (!isFirstTry) {				
+			if (!isFirstTry) {
 				System.out.println("Unable to process input. Please enter a number between 1 and " + numOptions + ":");
 			}
 			isFirstTry = false;

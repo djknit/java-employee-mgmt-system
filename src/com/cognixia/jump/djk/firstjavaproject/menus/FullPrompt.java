@@ -10,7 +10,8 @@ public class FullPrompt {
 	private String prompt =
 			"Enter the corresponding number to select an option:";
 	
-	{
+	static {
+		addDividerRow('_');
 		addDividerRow('-');
 		addDividerRow('_');
 	}
