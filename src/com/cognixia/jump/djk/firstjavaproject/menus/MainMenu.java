@@ -4,7 +4,8 @@ abstract public class MainMenu {
 	
 	static MenuOption[] options = {
 		new MenuOption("Employees", () -> {
-			
+			System.out.println("accepted input");
+			EmployeesMenu.run();
 		}),
 		new MenuOption("Departments", () -> {
 			
@@ -13,7 +14,7 @@ abstract public class MainMenu {
 	};
 	
 	public static void run() {
-		new Menu(new MenuHeader("Main Menu"), options).run();
+		new Menu(options, "Main Menu").run();
 	}
 	
 }

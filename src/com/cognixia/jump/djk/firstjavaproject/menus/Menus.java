@@ -6,6 +6,8 @@ public class Menus {
 		MainMenu.run();
 	}
 	
-	
+	public static void employees() {
+		EmployeesMenu.run();
+	}
 	
 }

@@ -1,26 +1,31 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
-public class MenuHeader {
+public class FullPrompt {
 	
 	private static final int HEADER_WIDTH = 42;
 	private static String headerDivider = "";
 	
+	private MenuOption[] options;
 	private String name = "Menu";
 	private String prompt =
-			"Please choose an option by entering the number of the action that you wish to select.";
+			"Enter the corresponding number to select an option:";
 	
 	{
 		addDividerRow('-');
 		addDividerRow('_');
 	}
 
-	public MenuHeader() {}
+	public FullPrompt(MenuOption[] options) {
+		this.options = options;
+	}
 	
-	public MenuHeader(String menuName) {
+	public FullPrompt(MenuOption[] options, String menuName) {
+		this.options = options;
 		this.name = menuName;
 	}
 	
-	public MenuHeader(String menuName, String prompt) {
+	public FullPrompt(MenuOption[] options, String menuName, String prompt) {
+		this.options = options;
 		this.name = menuName;
 		this.prompt = prompt;
 	}
@@ -34,6 +39,10 @@ public class MenuHeader {
 	
 	public final void print() {
 		System.out.println(headerDivider + name.toUpperCase() + ":\n");
+		for (int i = 0; i < options.length; i++) {
+			System.out.println("  " + (i + 1) + ".) " + options[i].getDescription());
+		}
+		System.out.println("\n" + prompt);
 	}
 	
 }
