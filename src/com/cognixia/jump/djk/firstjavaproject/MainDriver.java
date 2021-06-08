@@ -7,6 +7,8 @@ public class MainDriver {
 	public static void main(String[] args) {
 		Greeting.run();
 		Menus.main();
+		Input.close();
+		Greeting.runGoodbye();
 	}
 
 }

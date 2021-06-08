@@ -4,11 +4,10 @@ abstract public class MainMenu {
 	
 	static MenuOption[] options = {
 		new MenuOption("Employees", () -> {
-			System.out.println("accepted input");
-			EmployeesMenu.run();
+			Menus.employees();
 		}),
 		new MenuOption("Departments", () -> {
-			
+			Menus.departments();
 		}),
 		new MenuOption("Exit Program", () -> {})
 	};

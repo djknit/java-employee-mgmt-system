@@ -10,4 +10,8 @@ public class Menus {
 		EmployeesMenu.run();
 	}
 	
+	public static void departments() {
+		DepartmentsMenu.run();
+	}
+	
 }

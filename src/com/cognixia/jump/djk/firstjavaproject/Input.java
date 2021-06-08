@@ -7,16 +7,26 @@ public class Input {
 	
 	private static Scanner inputScanner = new Scanner(System.in);
 	
-	public int getIntInput() throws InputMismatchException, Exception {
-//		if (inputScanner.hasNextInt()) {
-			return inputScanner.nextInt();
-//		}
-//		else {
-//		}
+	static {
+		inputScanner.useDelimiter(System.lineSeparator()); // source: https://www.reddit.com/r/javahelp/wiki/scanner
 	}
 	
-	public String getInput() {
+	public static int getIntInput() throws InputMismatchException, Exception {
+		try {
+			int intInput = inputScanner.nextInt();
+			return intInput;
+		} catch(Exception e) {
+			inputScanner.next();
+			throw e;
+		}
+	}
+	
+	public static String getInput() {
 		return inputScanner.next();
+	}
+	
+	public static void close() {
+		inputScanner.close();
 	}
 	
 }

@@ -12,6 +12,9 @@ abstract public class EmployeesMenu {
 		new MenuOption("Get and/or Edit Single Employee", () -> {
 			
 		}),
+		new MenuOption("Main Menu", () -> {
+			Menus.main();
+		}),
 		new MenuOption("Exit Program", () -> {})
 	};
 	

@@ -6,5 +6,9 @@ abstract public class Greeting {
 			"------------------------------------------\n" +
 			"WELCOME TO THE EMPLOYEE MANAGEMENT SYSTEM!"
 		);
-	};	
+	};
+	
+	public static void runGoodbye() {
+		System.out.println("\nGOODBYE");
+	};
 }
