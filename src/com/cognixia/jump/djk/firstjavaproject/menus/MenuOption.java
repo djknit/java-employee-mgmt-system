@@ -1,13 +1,13 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
-import com.cognixia.jump.djk.firstjavaproject.HasExecutor;
+import com.cognixia.jump.djk.firstjavaproject.Executor;
 
 public class MenuOption {
 	
 	private String description;
-	private HasExecutor executor;
+	private Executor executor;
 	
-	MenuOption(String description, HasExecutor executor) {
+	MenuOption(String description, Executor executor) {
 		this.description = description;
 		this.executor = executor;
 	}

@@ -1,13 +1,16 @@
 package com.cognixia.jump.djk.firstjavaproject.inputs;
 
-import com.cognixia.jump.djk.firstjavaproject.HasExecutor;
+import com.cognixia.jump.djk.firstjavaproject.Executor;
 import com.cognixia.jump.djk.firstjavaproject.InputScanner;
+import com.cognixia.jump.djk.firstjavaproject.InputHandler;
 
 public class TextInput {
 	
 	private static String divider = "\n";
-	String prompt;
-	HasExecutor canceler;
+	private String prompt;
+	private Executor canceler;
+	private InputHandler inputHandler;
+	private boolean hasCanceler = false;
 	
 	static {
 		for (int i = 0; i < 42; i++) {
@@ -15,23 +18,27 @@ public class TextInput {
 		}
 	}
 	
-	TextInput(String prompt) {
+	TextInput(String prompt, InputHandler inputHandler) {
 		this.prompt = prompt;
+		this.inputHandler = inputHandler;
 	}
 	
-	TextInput(String prompt, HasExecutor canceler) {
-		this.prompt = prompt;
+	TextInput(String prompt, InputHandler inputHandler, Executor canceler) {
+		this(prompt, inputHandler);
 		this.canceler = canceler;
+		this.hasCanceler = true;
 	}
 	
-	public String run() {
-		System.out.println(divider + prompt + " (Or type \"b\" to go back.)");
-		String userInput = InputScanner.getInput();
-		if (userInput.toLowerCase() == "b") {
+	public void run() {
+		String fullPrompt = divider + prompt;
+		if (hasCanceler) fullPrompt += "\n(Or type \"0\" or \"b\" to go back.):";
+		System.out.println(fullPrompt);
+		String userInput = InputScanner.getInput().trim();
+		if (hasCanceler && (userInput.toLowerCase() == "b" || userInput == "0")) {
 			canceler.execute();
-			return "";
+			return;
 		}
-		return userInput;
+		inputHandler.handleInput(userInput);
 	}
 	
 }
