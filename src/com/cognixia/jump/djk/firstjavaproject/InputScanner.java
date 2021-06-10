@@ -3,7 +3,7 @@ package com.cognixia.jump.djk.firstjavaproject;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Input {
+public class InputScanner {
 	
 	private static Scanner inputScanner = new Scanner(System.in);
 	

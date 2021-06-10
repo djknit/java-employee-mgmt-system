@@ -1,28 +1,31 @@
 package com.cognixia.jump.djk.firstjavaproject.data;
 
 public class Employee {
-	// source: Cognixia Java JUMP program in-class demonstration (6/3/21)
+	// source: Cognixia Java JUMP program in-class demonstration (/3/21)
 
 	private static int nextId = 1;
 
 	private int id;
-	private String name;
+	private HumanName name;
 	private DollarAmount salary;
 	private String department;
+	
+	public Employee(String firstName, String lastName, int Salary, String department) {
+		this(new HumanName(firstName, lastName), Salary, department);
+	}
 
-	public Employee(String name, int salary, String department) {
-//		super();
-		this.name = name;
+	public Employee(HumanName name, int salary, String department) {
+		setName(name);
 		this.salary = new DollarAmount(salary);			
 		this.department = department;
 		this.id = nextId++;
 	}
 
-	public String getName() {
+	public HumanName getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(HumanName name) {
 		this.name = name;
 	}
 

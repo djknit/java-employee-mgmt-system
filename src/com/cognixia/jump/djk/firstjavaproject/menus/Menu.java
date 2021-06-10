@@ -1,6 +1,6 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
-import com.cognixia.jump.djk.firstjavaproject.Input;
+import com.cognixia.jump.djk.firstjavaproject.InputScanner;
 
 public class Menu {
 	
@@ -41,7 +41,7 @@ public class Menu {
 			}
 			isFirstTry = false;
 			try {
-				selectedNumber = Input.getIntInput();
+				selectedNumber = InputScanner.getIntInput();
 			} catch(Exception e) {
 				continue;
 			}

@@ -1,4 +1,4 @@
-package com.cognixia.jump.djk.firstjavaproject.menus;
+package com.cognixia.jump.djk.firstjavaproject;
 
 @FunctionalInterface
 public interface HasExecutor {

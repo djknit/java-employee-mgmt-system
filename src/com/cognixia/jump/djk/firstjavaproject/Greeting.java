@@ -9,6 +9,6 @@ abstract public class Greeting {
 	};
 	
 	public static void runGoodbye() {
-		System.out.println("\nGOODBYE");
+		System.out.println("\n* * * GOODBYE * * *");
 	};
 }

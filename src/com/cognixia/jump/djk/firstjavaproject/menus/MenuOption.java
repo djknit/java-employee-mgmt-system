@@ -1,5 +1,7 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
+import com.cognixia.jump.djk.firstjavaproject.HasExecutor;
+
 public class MenuOption {
 	
 	private String description;

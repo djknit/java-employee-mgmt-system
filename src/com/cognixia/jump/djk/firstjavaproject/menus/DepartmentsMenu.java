@@ -13,6 +13,9 @@ abstract public class DepartmentsMenu {
 			// show name, budget, employees, salary costs?
 			
 		}),
+		new MenuOption("Add New Department", () -> {
+			
+		}),
 		new MenuOption("Main Menu", () -> {
 			Menus.main();
 		}),

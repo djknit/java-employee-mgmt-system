@@ -5,9 +5,9 @@ public class HumanName {
 	private String first;
 	private String last;
 	
-	HumanName(String firstName, String lastName) {
-		first = firstName;
-		last = lastName;
+	public HumanName(String firstName, String lastName) {
+		setFirstName(firstName);
+		setLastName(lastName);
 	}
 	
 	public void setFirstName(String firstName) {
@@ -16,6 +16,14 @@ public class HumanName {
 	
 	public void setLastName(String lastName) {
 		last = lastName;
+	}
+	
+	public String getFirstName() {
+		return first;
+	}
+	
+	public String getLastName() {
+		return last;
 	}
 	
 	@Override

@@ -6,9 +6,9 @@ public class MainDriver {
 
 	public static void main(String[] args) {
 		Greeting.run();
-		// retrieve saved object data (optional)
+		// <retrieve saved object data (optional)>
 		Menus.main();
-		Input.close();
+		InputScanner.close();
 		Greeting.runGoodbye();
 	}
 
