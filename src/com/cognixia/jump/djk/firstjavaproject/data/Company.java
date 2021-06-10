@@ -1,49 +1,41 @@
 package com.cognixia.jump.djk.firstjavaproject.data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class Company {
+abstract public class Company {
 
-	private static int nextId = 1;
+//	private DollarAmount budget;
+	private static Set<Department> departments = new HashSet<>();
+	private static Set<Employee> employees = new HashSet<>();
 	
-	private int id;
-	private String name;
-	private DollarAmount budget;
-	private Set<Employee> employees = new HashSet<>();
-	
-	public Company(String name) {
-		this(name, 0);
+	public static DollarAmount getBudget() {
+		return departments
+				.stream()
+				.map(Department::getBudget)
+				.reduce(new DollarAmount(), DollarAmount::getSum);
+//				.map(dept -> dept.getBudget())
+//				.reduce((d1_budget, d2_budget) -> DollarAmount.getSum(d1_budget, d2_budget))
+//				.get();
 	}
 	
-	public Company(String name, int budget) {
-		this.name = name;
-		this.budget = new DollarAmount(budget);
+	public static Set<Employee> getEmployees() {
+		return employees;
 	}
 	
-	public String getName() {
-		return name;
+	public static Set<Department> getDepartments() {
+		return departments;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public DollarAmount getBudget() {
-		return budget;
-	}
-	
-	public void setBudget(int budget) {
-		this.budget = new DollarAmount(budget);
-	}
-	
-	public void setBudget(DollarAmount budget) {
-		this.budget = budget;
-	}
-	
-	public Set<Employee> addEmployee(Employee newEmployee) {
+	public static Set<Employee> addEmployee(Employee newEmployee) {
 		employees.add(newEmployee);
 		return employees;
+	}
+	
+	public static Set<Department> addDepartment(Department newDept) {
+		departments.add(newDept);
+		return departments;
 	}
 	
 }

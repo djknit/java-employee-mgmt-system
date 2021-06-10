@@ -15,7 +15,7 @@ abstract public class EmployeesMenu {
 		new MenuOption("Main Menu", () -> {
 			Menus.main();
 		}),
-		new MenuOption("Exit Program", () -> {})
+		new EndProgramMenuOption()
 	};
 	
 	public static void run() {

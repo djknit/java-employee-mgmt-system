@@ -9,7 +9,7 @@ abstract public class MainMenu {
 		new MenuOption("Departments", () -> {
 			Menus.departments();
 		}),
-		new MenuOption("Exit Program", () -> {})
+		new EndProgramMenuOption()
 	};
 	
 	public static void run() {

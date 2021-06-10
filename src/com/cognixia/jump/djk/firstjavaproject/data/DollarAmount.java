@@ -21,6 +21,10 @@ public class DollarAmount {
 		}
 	}
 	
+	public static DollarAmount getSum(DollarAmount dollarAmt1, DollarAmount dollarAmt2) {
+		return new DollarAmount(dollarAmt1.getAmount() + dollarAmt2.getAmount());
+	}
+	
 	public int getAmount() {
 		return amount;
 	}

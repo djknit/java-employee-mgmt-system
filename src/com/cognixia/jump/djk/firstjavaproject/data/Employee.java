@@ -1,6 +1,7 @@
 package com.cognixia.jump.djk.firstjavaproject.data;
 
 public class Employee {
+	// source: Cognixia Java JUMP program in-class demonstration (6/3/21)
 
 	private static int nextId = 1;
 

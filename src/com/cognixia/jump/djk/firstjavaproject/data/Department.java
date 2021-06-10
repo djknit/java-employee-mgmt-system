@@ -19,6 +19,7 @@ public class Department {
 	public Department(String name, int budget) {
 		this.name = name;
 		this.budget = new DollarAmount(budget);
+		this.id = nextId++;
 	}
 	
 	public String getName() {
