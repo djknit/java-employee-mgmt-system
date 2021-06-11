@@ -1,36 +1,30 @@
 package com.cognixia.jump.djk.firstjavaproject.inputs;
 
+import com.cognixia.jump.djk.firstjavaproject.Divider;
 import com.cognixia.jump.djk.firstjavaproject.Executor;
 import com.cognixia.jump.djk.firstjavaproject.InputScanner;
-import com.cognixia.jump.djk.firstjavaproject.InputHandler;
+import com.cognixia.jump.djk.firstjavaproject.StringInHandler;
 
 public class TextInput {
 	
-	private static String divider = "\n";
 	private String prompt;
 	private Executor canceler;
-	private InputHandler inputHandler;
+	private StringInHandler inputHandler;
 	private boolean hasCanceler = false;
 	
-	static {
-		for (int i = 0; i < 42; i++) {
-			divider += "-";
-		}
-	}
-	
-	public TextInput(String prompt, InputHandler inputHandler) {
+	public TextInput(String prompt, StringInHandler inputHandler) {
 		this.prompt = prompt;
 		this.inputHandler = inputHandler;
 	}
 	
-	public TextInput(String prompt, InputHandler inputHandler, Executor canceler) {
+	public TextInput(String prompt, StringInHandler inputHandler, Executor canceler) {
 		this(prompt, inputHandler);
 		this.canceler = canceler;
 		this.hasCanceler = true;
 	}
 	
 	public void run() {
-		String fullPrompt = divider + prompt;
+		String fullPrompt = Divider.get() + "\n" + prompt;
 		if (hasCanceler) fullPrompt += "\n(Or enter \"0\" or \"b\" to go back.):";
 		System.out.println(fullPrompt);
 		String userInput = InputScanner.getInput().trim();

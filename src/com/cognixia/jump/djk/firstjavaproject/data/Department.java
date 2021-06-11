@@ -13,12 +13,12 @@ public class Department {
 	private Set<Employee> employees = new HashSet<>();
 	
 	public Department(String name) {
-		this(name, 0);
+		this(name, new DollarAmount());
 	}
 	
-	public Department(String name, int budget) {
+	public Department(String name, DollarAmount budget) {
 		this.name = name;
-		this.budget = new DollarAmount(budget);
+		this.budget = budget;
 		this.id = nextId++;
 	}
 	
@@ -34,10 +34,6 @@ public class Department {
 		return budget;
 	}
 	
-	public void setBudget(int budget) {
-		this.budget = new DollarAmount(budget);
-	}
-	
 	public void setBudget(DollarAmount budget) {
 		this.budget = budget;
 	}
@@ -49,7 +45,7 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return "Department [id=" + id + ", name=" + name + ", budget=" + budget + "]";
+		return "Department [ id=" + id + " | name=" + name + " | budget=" + budget + " ]";
 	}
 	
 }

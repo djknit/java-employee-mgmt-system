@@ -9,6 +9,7 @@ import com.cognixia.jump.djk.firstjavaproject.InputScanner;
 public class DollarsInput {
 
 	private static String divider = "\n";
+	
 	private String prompt;
 	private Executor canceler;
 	private DollarAmountInHandler inputHandler;
@@ -32,7 +33,7 @@ public class DollarsInput {
 	}
 	
 	public void run() {
-		run(divider + prompt);
+		run(divider + "\n" + prompt);
 	}
 	
 	private void run(String fullPrompt) {
