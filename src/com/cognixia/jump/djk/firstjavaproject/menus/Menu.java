@@ -2,7 +2,7 @@ package com.cognixia.jump.djk.firstjavaproject.menus;
 
 import com.cognixia.jump.djk.firstjavaproject.InputScanner;
 
-public class Menu {
+class Menu {
 	
 	private MenuOption[] options;
 	private FullPrompt fullPrompt = null;
@@ -22,11 +22,11 @@ public class Menu {
 		this.fullPrompt = new FullPrompt(options, name, prompt);
 	}
 	
-	public final void run() {
+	final void run() {
 		run(this);
 	}
 	
-	public static void run(Menu menu) {
+	static void run(Menu menu) {
 		menu.fullPrompt.print();
 		int selectionNumber = getInput(menu.options.length);
 		menu.options[selectionNumber - 1].select();

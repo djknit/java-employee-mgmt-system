@@ -1,32 +1,35 @@
 package com.cognixia.jump.djk.firstjavaproject;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputScanner {
 	
-	private static Scanner inputScanner = new Scanner(System.in);
+	private static final Scanner SCANNER = new Scanner(System.in);
 	
 	static {
-		inputScanner.useDelimiter(System.lineSeparator()); // source: https://www.reddit.com/r/javahelp/wiki/scanner
+		SCANNER.useDelimiter(System.lineSeparator()); // source: https://www.reddit.com/r/javahelp/wiki/scanner
 	}
 	
-	public static int getIntInput() throws InputMismatchException, Exception {
+	public static int getIntInput() throws Exception {
+		return getIntInput(true);
+	}
+	
+	public static int getIntInput(boolean shouldAdvanceInputOnFail) throws Exception {
 		try {
-			int intInput = inputScanner.nextInt();
+			int intInput = SCANNER.nextInt();
 			return intInput;
 		} catch(Exception e) {
-			inputScanner.next();
+			if (shouldAdvanceInputOnFail) SCANNER.next();
 			throw e;
 		}
 	}
 	
 	public static String getInput() {
-		return inputScanner.next();
+		return SCANNER.next();
 	}
 	
 	public static void close() {
-		inputScanner.close();
+		SCANNER.close();
 	}
 	
 }

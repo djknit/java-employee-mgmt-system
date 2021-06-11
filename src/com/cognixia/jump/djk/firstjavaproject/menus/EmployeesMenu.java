@@ -1,6 +1,6 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
-abstract public class EmployeesMenu {
+abstract class EmployeesMenu {
 
 	static MenuOption[] options = {
 		new MenuOption("Add New Employee", () -> {
@@ -18,7 +18,8 @@ abstract public class EmployeesMenu {
 		new EndProgramMenuOption()
 	};
 	
-	public static void run() {
+	static void run() {
 		new Menu(options, "Employees Menu").run();
 	}
+	
 }

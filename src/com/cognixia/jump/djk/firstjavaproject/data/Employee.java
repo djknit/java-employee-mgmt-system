@@ -4,17 +4,16 @@ public class Employee {
 	// source: Cognixia Java JUMP program in-class demonstration (/3/21)
 
 	private static int nextId = 1;
-
 	private int id;
 	private HumanName name;
 	private DollarAmount salary;
-	private String department;
+	private Department department;
 	
-	public Employee(String firstName, String lastName, int Salary, String department) {
-		this(new HumanName(firstName, lastName), Salary, department);
+	public Employee(String firstName, String lastName, int salary, Department department) {
+		this(new HumanName(firstName, lastName), salary, department);
 	}
 
-	public Employee(HumanName name, int salary, String department) {
+	public Employee(HumanName name, int salary, Department department) {
 		setName(name);
 		this.salary = new DollarAmount(salary);			
 		this.department = department;
@@ -23,6 +22,10 @@ public class Employee {
 
 	public HumanName getName() {
 		return name;
+	}
+	
+	public void setName(String firstName, String lastName) {
+		setName(new HumanName(firstName, lastName));
 	}
 
 	public void setName(HumanName name) {
@@ -37,11 +40,11 @@ public class Employee {
 		this.salary = new DollarAmount(salary);
 	}
 
-	public String getDepartment() {
+	public Department getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(String department) {
+	public void setDepartment(Department department) {
 		this.department = department;
 	}
 
@@ -51,7 +54,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", department=" + department + "]";
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", department=" + department.getName() + "]";
 	}
 
 }

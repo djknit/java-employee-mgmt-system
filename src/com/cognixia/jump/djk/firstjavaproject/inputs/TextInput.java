@@ -18,12 +18,12 @@ public class TextInput {
 		}
 	}
 	
-	TextInput(String prompt, InputHandler inputHandler) {
+	public TextInput(String prompt, InputHandler inputHandler) {
 		this.prompt = prompt;
 		this.inputHandler = inputHandler;
 	}
 	
-	TextInput(String prompt, InputHandler inputHandler, Executor canceler) {
+	public TextInput(String prompt, InputHandler inputHandler, Executor canceler) {
 		this(prompt, inputHandler);
 		this.canceler = canceler;
 		this.hasCanceler = true;
@@ -31,7 +31,7 @@ public class TextInput {
 	
 	public void run() {
 		String fullPrompt = divider + prompt;
-		if (hasCanceler) fullPrompt += "\n(Or type \"0\" or \"b\" to go back.):";
+		if (hasCanceler) fullPrompt += "\n(Or enter \"0\" or \"b\" to go back.):";
 		System.out.println(fullPrompt);
 		String userInput = InputScanner.getInput().trim();
 		if (hasCanceler && (userInput.toLowerCase() == "b" || userInput == "0")) {

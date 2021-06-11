@@ -1,6 +1,6 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
-public class FullPrompt {
+class FullPrompt {
 	
 	private static final int HEADER_WIDTH = 42;
 	private static String headerDivider = "";
@@ -16,16 +16,16 @@ public class FullPrompt {
 		addDividerRow('_');
 	}
 
-	public FullPrompt(MenuOption[] options) {
+	FullPrompt(MenuOption[] options) {
 		this.options = options;
 	}
 	
-	public FullPrompt(MenuOption[] options, String menuName) {
+	FullPrompt(MenuOption[] options, String menuName) {
 		this.options = options;
 		this.name = menuName;
 	}
 	
-	public FullPrompt(MenuOption[] options, String menuName, String prompt) {
+	FullPrompt(MenuOption[] options, String menuName, String prompt) {
 		this.options = options;
 		this.name = menuName;
 		this.prompt = prompt;
