@@ -49,7 +49,7 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", budget=" + budget + "]";
+		return "Department [id=" + id + ", name=" + name + ", budget=" + budget + "]";
 	}
 	
 }
