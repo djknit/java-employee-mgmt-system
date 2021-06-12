@@ -1,4 +1,4 @@
-package com.cognixia.jump.djk.firstjavaproject;
+package com.cognixia.jump.djk.firstjavaproject.functionalInterfaces;
 
 @FunctionalInterface
 public interface StringInHandler {

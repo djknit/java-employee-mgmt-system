@@ -8,8 +8,7 @@ abstract public class MainMenu {
 		}),
 		new MenuOption("Departments", () -> {
 			Menus.departments();
-		}),
-		new EndProgramMenuOption()
+		})
 	};
 	
 	public static void run() {

@@ -10,12 +10,12 @@ public class Employee {
 	private Department department;
 	
 	public Employee(String firstName, String lastName, int salary, Department department) {
-		this(new HumanName(firstName, lastName), salary, department);
+		this(new HumanName(firstName, lastName), new DollarAmount(salary), department);
 	}
 
-	public Employee(HumanName name, int salary, Department department) {
+	public Employee(HumanName name, DollarAmount salary, Department department) {
 		setName(name);
-		this.salary = new DollarAmount(salary);			
+		this.salary = salary;		
 		this.department = department;
 		this.id = nextId++;
 	}
@@ -37,7 +37,11 @@ public class Employee {
 	}
 
 	public void setSalary(int salary) {
-		this.salary = new DollarAmount(salary);
+		setSalary(new DollarAmount(salary));
+	}
+	
+	public void setSalary(DollarAmount salary) {
+		this.salary = salary;
 	}
 
 	public Department getDepartment() {

@@ -1,9 +1,9 @@
 package com.cognixia.jump.djk.firstjavaproject.inputs;
 
-import com.cognixia.jump.djk.firstjavaproject.DollarAmountInHandler;
-import com.cognixia.jump.djk.firstjavaproject.Executor;
 import com.cognixia.jump.djk.firstjavaproject.data.DollarAmount;
 import com.cognixia.jump.djk.firstjavaproject.data.InvalidDollarAmountException;
+import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DollarAmountInHandler;
+import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
 import com.cognixia.jump.djk.firstjavaproject.InputScanner;
 
 public class DollarsInput {
@@ -39,6 +39,7 @@ public class DollarsInput {
 	private void run(String fullPrompt) {
 		if (hasCanceler) fullPrompt += "\n(Or enter \"b\" to go back.):";
 		System.out.println(fullPrompt);
+		System.out.print("$");
 		try {
 			int input = InputScanner.getIntInput(false);
 			if (hasCanceler && input == 0) canceler.execute();

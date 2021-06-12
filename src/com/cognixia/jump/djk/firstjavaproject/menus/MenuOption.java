@@ -1,6 +1,6 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
-import com.cognixia.jump.djk.firstjavaproject.Executor;
+import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
 
 class MenuOption {
 	

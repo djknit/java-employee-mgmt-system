@@ -1,9 +1,9 @@
 package com.cognixia.jump.djk.firstjavaproject.inputs;
 
-import com.cognixia.jump.djk.firstjavaproject.Divider;
-import com.cognixia.jump.djk.firstjavaproject.Executor;
 import com.cognixia.jump.djk.firstjavaproject.InputScanner;
-import com.cognixia.jump.djk.firstjavaproject.StringInHandler;
+import com.cognixia.jump.djk.firstjavaproject.display.Divider;
+import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
+import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.StringInHandler;
 
 public class TextInput {
 	

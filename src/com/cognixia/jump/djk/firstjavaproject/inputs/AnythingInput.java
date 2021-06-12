@@ -1,7 +1,7 @@
 package com.cognixia.jump.djk.firstjavaproject.inputs;
 
-import com.cognixia.jump.djk.firstjavaproject.Executor;
 import com.cognixia.jump.djk.firstjavaproject.InputScanner;
+import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
 
 public class AnythingInput {
 

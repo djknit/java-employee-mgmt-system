@@ -1,4 +1,4 @@
-package com.cognixia.jump.djk.firstjavaproject;
+package com.cognixia.jump.djk.firstjavaproject.functionalInterfaces;
 
 import com.cognixia.jump.djk.firstjavaproject.data.DollarAmount;
 

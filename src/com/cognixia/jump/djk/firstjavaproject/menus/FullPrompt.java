@@ -6,23 +6,13 @@ class FullPrompt {
 	private static String headerDivider = "";
 	
 	private MenuOption[] options;
-	private String name = "Menu";
-	private String prompt =
-			"Enter the corresponding number to select an option:";
+	private String name;
+	private String prompt;
 	
 	static {
 		addDividerRow('_');
 		addDividerRow('-');
 		addDividerRow('_');
-	}
-
-	FullPrompt(MenuOption[] options) {
-		this.options = options;
-	}
-	
-	FullPrompt(MenuOption[] options, String menuName) {
-		this.options = options;
-		this.name = menuName;
 	}
 	
 	FullPrompt(MenuOption[] options, String menuName, String prompt) {
@@ -41,7 +31,7 @@ class FullPrompt {
 	public final void print() {
 		System.out.println(headerDivider + name.toUpperCase() + ":\n");
 		for (int i = 0; i < options.length; i++) {
-			System.out.println("  " + (i + 1) + ".) " + options[i].getDescription());
+			System.out.println("  " + i + ".) " + options[i].getDescription());
 		}
 		System.out.println("\n" + prompt);
 	}

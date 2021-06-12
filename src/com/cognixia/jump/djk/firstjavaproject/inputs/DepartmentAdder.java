@@ -1,12 +1,12 @@
 package com.cognixia.jump.djk.firstjavaproject.inputs;
 
-import com.cognixia.jump.djk.firstjavaproject.StringInHandler;
-import com.cognixia.jump.djk.firstjavaproject.Divider;
-import com.cognixia.jump.djk.firstjavaproject.DollarAmountInHandler;
-import com.cognixia.jump.djk.firstjavaproject.Executor;
 import com.cognixia.jump.djk.firstjavaproject.data.Company;
 import com.cognixia.jump.djk.firstjavaproject.data.Department;
 import com.cognixia.jump.djk.firstjavaproject.data.DollarAmount;
+import com.cognixia.jump.djk.firstjavaproject.display.Divider;
+import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DollarAmountInHandler;
+import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
+import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.StringInHandler;
 import com.cognixia.jump.djk.firstjavaproject.menus.Menus;
 
 public class DepartmentAdder {
