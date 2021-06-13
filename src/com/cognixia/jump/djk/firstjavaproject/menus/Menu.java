@@ -54,6 +54,7 @@ class Menu {
 					+ (numOptions - 1) + ":"
 				);
 			}
+			System.out.print(" > ");
 			try {
 				selectedNumber = InputScanner.getIntInput();
 			} catch(Exception e) {

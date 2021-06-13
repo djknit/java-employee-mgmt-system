@@ -11,10 +11,9 @@ public class DollarsInput {
 	private static String divider = "\n";
 	
 	private String prompt;
-	private Executor canceler;
+	private Executor canceler = null;
 	private DollarAmountInHandler inputHandler;
-	private boolean hasCanceler = false;
-	private final String RETRY_PROMPT = 
+	private final static String RETRY_PROMPT = 
 			"Unable to process input. Please enter a positive whole number.";
 	
 	static {
@@ -29,7 +28,6 @@ public class DollarsInput {
 	public DollarsInput(String prompt, DollarAmountInHandler inputHandler, Executor canceler) {
 		this(prompt, inputHandler);
 		this.canceler = canceler;
-		this.hasCanceler = true;
 	}
 	
 	public void run() {
@@ -37,25 +35,20 @@ public class DollarsInput {
 	}
 	
 	private void run(String fullPrompt) {
-		if (hasCanceler) fullPrompt += "\n(Or enter \"b\" to go back.):";
+		if (canceler != null) fullPrompt += "\n(Or enter \"b\" to go back.):";
 		System.out.println(fullPrompt);
-		System.out.print("$");
+		System.out.print(InputScanner.getLinePreface() + "$ ");
 		try {
 			int input = InputScanner.getIntInput(false);
-			if (hasCanceler && input == 0) canceler.execute();
-			else if (input < 0) tryAgain();
-			else {
-				inputHandler.handleInput(new DollarAmount(input));
-			}
+			if (input < 0) tryAgain();
+			else inputHandler.handleInput(new DollarAmount(input));
 		} catch(InvalidDollarAmountException e) {
 			tryAgain();
 			return;
 		} catch(Exception e) {
-			if (InputScanner.getInput().trim().toLowerCase() == "b" && hasCanceler) {
-				canceler.execute();
-				return;
-			}
-			tryAgain();
+			boolean isB = InputScanner.getInput().trim().toLowerCase().equals("b");
+			if (isB && (canceler != null)) canceler.execute();
+			else tryAgain();
 		}
 	}
 	

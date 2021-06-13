@@ -3,7 +3,10 @@ package com.cognixia.jump.djk.firstjavaproject.inputs;
 import com.cognixia.jump.djk.firstjavaproject.data.Company;
 import com.cognixia.jump.djk.firstjavaproject.data.Department;
 import com.cognixia.jump.djk.firstjavaproject.data.DollarAmount;
+import com.cognixia.jump.djk.firstjavaproject.display.DepartmentReporter;
 import com.cognixia.jump.djk.firstjavaproject.display.Divider;
+import com.cognixia.jump.djk.firstjavaproject.display.InputGroupHeader;
+import com.cognixia.jump.djk.firstjavaproject.display.RecordReporter;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DollarAmountInHandler;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.StringInHandler;
@@ -17,6 +20,7 @@ public class DepartmentAdder {
 	private DollarAmount budget;
 	
 	public void run() {
+		InputGroupHeader.print("Add Department");
 		Executor addDeptAndProcede = () -> this.addDepartment(cancel);
 		getNameInput(() -> getBudgetInput(addDeptAndProcede));
 	}
@@ -40,7 +44,7 @@ public class DepartmentAdder {
 	private void addDepartment(Executor next) {
 		Department newDepartment = new Department(name, budget);
 		Company.addDepartment(newDepartment);
-		System.out.println(Divider.get() + "\nNew department created:\n" + newDepartment);
+		new DepartmentReporter().announceCreationOf(newDepartment);
 		new AnythingInput(next).run();
 	}
 	

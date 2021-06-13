@@ -10,6 +10,10 @@ public class InputScanner {
 		SCANNER.useDelimiter(System.lineSeparator()); // source: https://www.reddit.com/r/javahelp/wiki/scanner
 	}
 	
+	public static String getLinePreface() {
+		return " >> ";
+	}
+	
 	public static int getIntInput() throws Exception {
 		return getIntInput(true);
 	}

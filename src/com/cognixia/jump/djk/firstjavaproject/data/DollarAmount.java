@@ -25,11 +25,15 @@ public class DollarAmount {
 		return new DollarAmount(dollarAmt1.getAmount() + dollarAmt2.getAmount());
 	}
 	
+//	public void add(DollarAmount dollarAmt2) throws InvalidDollarAmountException, Exception {
+//		setAmount(amount + dollarAmt2.getAmount());
+//	}
+	
 	public int getAmount() {
 		return amount;
 	}
 	
-	public void setAmount(int amount) throws InvalidDollarAmountException {
+	public void setAmount(int amount) throws InvalidDollarAmountException, Exception {
 		if (amount < 0) throw new InvalidDollarAmountException();
 		this.amount = amount;
 	}
