@@ -1,12 +1,6 @@
 package com.cognixia.jump.djk.firstjavaproject.display;
 
-public class InputGroupHeader {
-	
-	private String headerString = "";
-	
-	private InputGroupHeader(String label) {
-		headerString = Divider.get() + "\n" + Divider.getLow() + "\n" + formatLabel(label);
-	}
+abstract public class InputGroupHeader {
 	
 	public static void print(String label) {
 		Divider.print();
@@ -15,7 +9,7 @@ public class InputGroupHeader {
 	}
 	
 	public static String get(String label) {
-		return new InputGroupHeader(label).headerString;
+		return Divider.get() + "\n" + Divider.getLow() + "\n" + formatLabel(label);
 	}
 	
 	private static String formatLabel(String label) {

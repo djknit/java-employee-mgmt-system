@@ -17,7 +17,6 @@ abstract class EmployeesMenu {
 			Company.getEmployees().forEach(employee -> {
 				System.out.println(employee);
 			});
-//				System.out.println(Company.getEmployees());
 			new AnythingInput(() -> run()).run();
 		}),
 		new MenuOption("View/Edit Single Employee", () -> {
