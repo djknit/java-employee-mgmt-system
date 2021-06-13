@@ -1,26 +1,37 @@
 package com.cognixia.jump.djk.firstjavaproject.display;
 
 import java.util.Collection;
-//import java.util.Set;
 
 public class RecordReporter {
 	
 	private String entityTypeName;
+	public static final RecordReporter departments = new RecordReporter("department");
+	public static final RecordReporter employees = new RecordReporter("employee");
 	
-	RecordReporter(String entityTypeName) {
+	private RecordReporter(String entityTypeName) {
 		this.entityTypeName = entityTypeName;	
 	}
 	
+	public final void printEntity(Object entity) {
+		printEntity(entity, "Selected " + entityTypeName);
+	}
+	
 	public final void announceCreationOf(Object entity) {
-		printHeadDividers();
-		String text = "New " + entityTypeName + " created";
-		System.out.println(text.toUpperCase() + ":\n\n " + entity);
+		printEntity(entity, "New " + entityTypeName + " created");
 	}
 	
 	public final void printEntities(Collection<?> entities) {
 		printHeadDividers();
 		System.out.println((entityTypeName + "s").toUpperCase() + ":\n");
+		if (entities.isEmpty()) {
+			System.out.println(" No " + entityTypeName + "s found.");
+		}
 		CollectionPrinter.print(entities);
+	}
+	
+	private final void printEntity(Object entity, String labelText) {
+		printHeadDividers();
+		System.out.println(labelText.toUpperCase() + ":\n\n " + entity);
 	}
 	
 	private static void printHeadDividers() {

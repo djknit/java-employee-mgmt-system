@@ -1,9 +1,7 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
 import com.cognixia.jump.djk.firstjavaproject.data.Company;
-import com.cognixia.jump.djk.firstjavaproject.display.Divider;
-import com.cognixia.jump.djk.firstjavaproject.display.CollectionPrinter;
-import com.cognixia.jump.djk.firstjavaproject.display.DepartmentReporter;
+import com.cognixia.jump.djk.firstjavaproject.display.RecordReporter;
 import com.cognixia.jump.djk.firstjavaproject.inputs.AnythingInput;
 import com.cognixia.jump.djk.firstjavaproject.inputs.DepartmentAdder;
 
@@ -15,13 +13,7 @@ abstract class DepartmentsMenu {
 		new MenuOption("List All Departments", () -> {
 			// list names, budget, number of employees
 			// also list salary costs?
-//			System.out.println();
-//			Divider.printLow();
-//			Divider.print();
-//			System.out.println("DEPARTMENTS:\n");
-//			System.out.println(Company.getDepartments());
-			new DepartmentReporter().printEntities(Company.getDepartments());
-//			CollectionPrinter.print(Company.getDepartments());
+			RecordReporter.departments.printEntities(Company.getDepartments());
 			new AnythingInput(() -> run()).run();
 		}),
 		new MenuOption("View/Edit Single Department", () -> {
