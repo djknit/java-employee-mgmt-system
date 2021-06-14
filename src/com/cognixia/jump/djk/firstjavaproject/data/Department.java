@@ -43,6 +43,11 @@ public class Department extends RecordWithId {
 		return employees;
 	}
 	
+	public Set<Employee> removeEmployee(Employee employee) {
+		employees.remove(employee);
+		return employees;
+	}
+	
 	public Set<Employee> getEmployees() {
 		return employees;
 	}

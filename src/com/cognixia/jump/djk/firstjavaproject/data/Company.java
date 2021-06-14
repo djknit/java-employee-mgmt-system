@@ -38,4 +38,9 @@ abstract public class Company {
 		return departments;
 	}
 	
+	public static Set<Employee> removeEmployee(Employee employee) {
+		employees.remove(employee);
+		return employees;
+	}
+	
 }
