@@ -2,10 +2,12 @@ package com.cognixia.jump.djk.firstjavaproject.inputs;
 
 import com.cognixia.jump.djk.firstjavaproject.data.InvalidDollarAmountException;
 import com.cognixia.jump.djk.firstjavaproject.data.RecordWithId;
+import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DataRecordInHandler;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.IntInputHandler;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import com.cognixia.jump.djk.firstjavaproject.InputScanner;
 
@@ -13,21 +15,23 @@ public class IdInput {
 
 	private String prompt;
 	private Executor canceler = null;
-	private IntInputHandler inputHandler;
+	private DataRecordInHandler inputHandler;
 	private final static String RETRY_PROMPT = 
 			"Unable to process input. Please enter a valid id (or \"0\" or \"b\").";
+	private Collection<RecordWithId> entities;
 	
-	public IdInput(String prompt, IntInputHandler inputHandler) {
+	public IdInput(String prompt, DataRecordInHandler inputHandler) {
 		this.prompt = prompt;
 		this.inputHandler = inputHandler;
 	}
 	
-	public IdInput(String prompt, IntInputHandler inputHandler, Executor canceler) {
+	public IdInput(String prompt, DataRecordInHandler inputHandler, Executor canceler) {
 		this(prompt, inputHandler);
 		this.canceler = canceler;
 	}
 	
-	public void run() {
+	public void run(Collection<RecordWithId> entities) {
+		this.entities = entities;
 		run("\n" + prompt);
 	}
 	
@@ -41,7 +45,13 @@ public class IdInput {
 			else if (input == 0 && canceler != null) {
 				canceler.execute();
 			}
-			else inputHandler.handleInput(input);
+			else {
+				System.out.println("input accepted");
+				Optional<RecordWithId> entity = findByIdInCollection(entities, input);
+				System.out.println("entity:\n" + entity);
+				if (entity.isPresent()) inputHandler.handleInput(entity.get());
+				else tryAgain();
+			}
 		} catch(InvalidDollarAmountException e) {
 			tryAgain();
 			return;
@@ -52,7 +62,7 @@ public class IdInput {
 		}
 	}
 	
-	private Object findByIdInCollection(Collection<RecordWithId> entities, int id) {
+	private Optional<RecordWithId> findByIdInCollection(Collection<RecordWithId> entities, int id) {
 		// source: https://stackoverflow.com/questions/17526608/how-to-find-an-object-in-an-arraylist-by-property#answer-48839294
 		return entities.stream().filter(entity -> entity.hasId(id)).findFirst();
 	}

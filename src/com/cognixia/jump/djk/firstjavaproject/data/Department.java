@@ -42,6 +42,11 @@ public class Department extends RecordWithId {
 		employees.add(newEmployee);
 		return employees;
 	}
+	
+	@Override
+	public boolean hasId(int id) {
+		return id == this.id;
+	}
 
 	@Override
 	public String toString() {

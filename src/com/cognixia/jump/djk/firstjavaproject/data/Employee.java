@@ -51,9 +51,10 @@ public class Employee extends RecordWithId {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-
-	public int getId() {
-		return id;
+	
+	@Override
+	public boolean hasId(int id) {
+		return id == this.id;
 	}
 
 	@Override
