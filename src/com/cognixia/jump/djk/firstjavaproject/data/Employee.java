@@ -1,6 +1,6 @@
 package com.cognixia.jump.djk.firstjavaproject.data;
 
-public class Employee {
+public class Employee extends RecordWithId {
 	// source: Cognixia Java JUMP program in-class demonstration (/3/21)
 
 	private static int nextId = 1;

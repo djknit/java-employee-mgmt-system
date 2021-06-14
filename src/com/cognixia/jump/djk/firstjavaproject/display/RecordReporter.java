@@ -21,8 +21,12 @@ public class RecordReporter {
 	}
 	
 	public final void printEntities(Collection<?> entities) {
+		printEntities(entities, entityTypeName + "s");
+	}
+	
+	public final void printEntities(Collection<?> entities, String label) {
 		printHeadDividers();
-		System.out.println((entityTypeName + "s").toUpperCase() + ":\n");
+		System.out.println(label.toUpperCase() + ":\n");
 		if (entities.isEmpty()) {
 			System.out.println(" No " + entityTypeName + "s found.");
 		}

@@ -1,9 +1,13 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
+import java.util.Collection;
+
 import com.cognixia.jump.djk.firstjavaproject.data.Company;
+import com.cognixia.jump.djk.firstjavaproject.data.Department;
 import com.cognixia.jump.djk.firstjavaproject.display.RecordReporter;
 import com.cognixia.jump.djk.firstjavaproject.inputs.AnythingInput;
 import com.cognixia.jump.djk.firstjavaproject.inputs.DepartmentAdder;
+import com.cognixia.jump.djk.firstjavaproject.inputs.IdInput;
 
 abstract class DepartmentsMenu {
 	static MenuOption[] options = {
@@ -11,14 +15,26 @@ abstract class DepartmentsMenu {
 			new DepartmentAdder().run();
 		}),
 		new MenuOption("List All Departments", () -> {
-			// list names, budget, number of employees
-			// also list salary costs?
+			// list number of employees, also list salary costs?
 			RecordReporter.departments.printEntities(Company.getDepartments());
-			new AnythingInput(() -> run()).run();
+			new AnythingInput(DepartmentsMenu::run).run();
 		}),
 		new MenuOption("View/Edit Single Department", () -> {
 			// show name, budget, employees, salary costs?
-			
+			Collection<Department> departments = Company.getDepartments();
+			RecordReporter.departments.printEntities(departments, "Select a Department");
+//			System.out.println("\nEnter the id of a department to select it.\n(Or enter \"0\" or \"b\" to go back.)");
+			if (departments.isEmpty()) {
+				new AnythingInput(DepartmentsMenu::run).run();
+				return;
+			}
+			new IdInput(
+				"Enter the id of a department to select it.",
+				(int numInput) -> {
+					
+				},
+				Menus::departments
+			).run();
 		}),
 		new MenuOption("Main Menu", Menus::main)
 	};

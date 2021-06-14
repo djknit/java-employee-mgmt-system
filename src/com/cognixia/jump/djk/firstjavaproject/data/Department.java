@@ -3,7 +3,7 @@ package com.cognixia.jump.djk.firstjavaproject.data;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Department {
+public class Department extends RecordWithId {
 
 	private static int nextId = 1;
 	

@@ -2,6 +2,7 @@ package com.cognixia.jump.djk.firstjavaproject.inputs;
 
 import com.cognixia.jump.djk.firstjavaproject.data.DollarAmount;
 import com.cognixia.jump.djk.firstjavaproject.data.InvalidDollarAmountException;
+import com.cognixia.jump.djk.firstjavaproject.display.Divider;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DollarAmountInHandler;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
 import com.cognixia.jump.djk.firstjavaproject.InputScanner;
@@ -31,7 +32,7 @@ public class DollarsInput {
 	}
 	
 	public void run() {
-		run(divider + "\n" + prompt);
+		run(Divider.get() + "\n" + prompt);
 	}
 	
 	private void run(String fullPrompt) {
