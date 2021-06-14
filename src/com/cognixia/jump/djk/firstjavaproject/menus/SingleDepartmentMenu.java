@@ -9,6 +9,7 @@ import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.StringInHandler;
 import com.cognixia.jump.djk.firstjavaproject.inputs.AnythingInput;
 import com.cognixia.jump.djk.firstjavaproject.inputs.DollarsInput;
+import com.cognixia.jump.djk.firstjavaproject.inputs.EmployeeAdder;
 import com.cognixia.jump.djk.firstjavaproject.inputs.TextInput;
 
 abstract class SingleDepartmentMenu {
@@ -22,7 +23,8 @@ abstract class SingleDepartmentMenu {
 			new AnythingInput(SingleDepartmentMenu::run).run();
 		}),
 		new MenuOption("Add New Employee", () -> {
-			
+			InputGroupHeader.print(selectedDepartment + "\nAdd Employee");
+			new EmployeeAdder(selectedDepartment, SingleDepartmentMenu::run).run();
 		}),
 		new MenuOption("Change Department Name", () -> {
 			InputGroupHeader.print(selectedDepartment + "\nChange Department Name");

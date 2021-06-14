@@ -17,16 +17,13 @@ abstract class DepartmentsMenu {
 			new DepartmentAdder().run();
 		}),
 		new MenuOption("List All Departments", () -> {
-			// list number of employees, also list salary costs?
 			RecordReporter.departments.printEntities(Company.getDepartments());
 			new AnythingInput(DepartmentsMenu::run).run();
 		}),
 		new MenuOption("View/Edit Single Department", () -> {
-			// show name, budget, employees, salary costs?
 			Collection<Department> departments = Company.getDepartments();
 			Collection<RecordWithId> genericizedDepts = departments.stream().collect(Collectors.toList());
 			RecordReporter.departments.printEntities(departments, "Select a Department");
-//			System.out.println("\nEnter the id of a department to select it.\n(Or enter \"0\" or \"b\" to go back.)");
 			if (departments.isEmpty()) {
 				new AnythingInput(DepartmentsMenu::run).run();
 				return;

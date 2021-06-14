@@ -13,12 +13,21 @@ import com.cognixia.jump.djk.firstjavaproject.menus.Menus;
 
 public class EmployeeAdder {
 	
-	private static final Executor cancel = Menus::employees;
+	private Executor cancel = Menus::employees;
 	
 	private String firstName;
 	private HumanName name;
 	private DollarAmount salary;
 	private Department department;
+	
+	public EmployeeAdder(Department department) {
+		this.department = department;
+	}
+	
+	public EmployeeAdder(Department department, Executor cancel) {
+		this.department = department;
+		this.cancel = cancel;
+	}
 	
 	public void run() {
 		Executor addEmpAndProcede = () -> this.addEmployee(cancel);
@@ -52,6 +61,7 @@ public class EmployeeAdder {
 	private void addEmployee(Executor next) {
 		Employee newEmployee = new Employee(name, salary, department);
 		Company.addEmployee(newEmployee);
+		department.addEmployee(newEmployee);
 		System.out.println(Divider.get() + "\nNew employee added:\n" + newEmployee);
 		new AnythingInput(next).run();
 	}

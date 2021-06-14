@@ -59,7 +59,7 @@ public class Employee extends RecordWithId {
 
 	@Override
 	public String toString() {
-		return "Employee [ id=" + id + " | name=" + name + " | salary=" + salary + " | department=" + department.getName() + " ]";
+		return "Employee [ id=" + id + " | name=\"" + name + "\" | salary=" + salary + " | department=" + department.getName() + " ]";
 	}
 
 }
