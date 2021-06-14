@@ -46,9 +46,7 @@ public class IdInput {
 				canceler.execute();
 			}
 			else {
-				System.out.println("input accepted");
 				Optional<RecordWithId> entity = findByIdInCollection(entities, input);
-				System.out.println("entity:\n" + entity);
 				if (entity.isPresent()) inputHandler.handleInput(entity.get());
 				else tryAgain();
 			}

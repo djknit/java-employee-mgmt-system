@@ -34,9 +34,8 @@ abstract class DepartmentsMenu {
 			new IdInput(
 				"Enter the id of a department to select it.",
 				(RecordWithId selectedEntity) -> {
-					System.out.println(selectedEntity);
 					Department selectedDepartment = (Department) selectedEntity;
-					System.out.println(selectedDepartment);
+					SingleDepartmentMenu.run(selectedDepartment);
 				},
 				Menus::departments
 			).run(genericizedDepts);

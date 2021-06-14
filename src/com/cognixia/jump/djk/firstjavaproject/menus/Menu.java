@@ -19,13 +19,21 @@ class Menu {
 		this(options, name, DEFAULT_PROMPT);
 	}
 	
+	Menu(MenuOption[] options, String name, boolean leaveNameCase) {
+		this(options, name, DEFAULT_PROMPT, leaveNameCase);
+	}
+
 	Menu(MenuOption[] options, String name, String prompt) {
+		this(options, name, prompt, false);
+	}
+	
+	Menu(MenuOption[] options, String name, String prompt, boolean leaveNameCase) {
 		this.options = new MenuOption[options.length + 1];
 		this.options[0] = new EndProgramMenuOption();
 		for (int i = 0; i < options.length; i++) {
 			this.options[i + 1] = options[i];
 		}
-		this.fullPrompt = new FullPrompt(this.options, name, prompt);
+		this.fullPrompt = new FullPrompt(this.options, name, prompt, leaveNameCase);
 	}
 	
 	private class EndProgramMenuOption extends MenuOption {

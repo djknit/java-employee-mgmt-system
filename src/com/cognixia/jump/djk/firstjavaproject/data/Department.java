@@ -43,6 +43,10 @@ public class Department extends RecordWithId {
 		return employees;
 	}
 	
+	public Set<Employee> getEmployees() {
+		return employees;
+	}
+	
 	@Override
 	public boolean hasId(int id) {
 		return id == this.id;

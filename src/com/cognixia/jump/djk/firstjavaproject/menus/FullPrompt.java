@@ -10,7 +10,13 @@ class FullPrompt {
 
 	FullPrompt(MenuOption[] options, String menuName, String prompt) {
 		this.options = options;
-		this.name = menuName;
+		this.name = menuName.toUpperCase();
+		this.prompt = prompt;
+	}
+
+	FullPrompt(MenuOption[] options, String menuName, String prompt, boolean leaveCase) {
+		this.options = options;
+		this.name = leaveCase ? menuName : menuName.toUpperCase();
 		this.prompt = prompt;
 	}
 	
@@ -18,7 +24,7 @@ class FullPrompt {
 		Divider.printLow();
 		Divider.print();
 		Divider.printLow();
-		System.out.println(name.toUpperCase() + ":\n");
+		System.out.println(name + ":\n");
 		for (int i = 0; i < options.length; i++) {
 			System.out.println("  " + i + ".) " + options[i].getDescription());
 		}
