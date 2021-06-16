@@ -5,7 +5,7 @@ import com.cognixia.jump.djk.firstjavaproject.data.Department;
 import com.cognixia.jump.djk.firstjavaproject.data.DollarAmount;
 import com.cognixia.jump.djk.firstjavaproject.data.Employee;
 import com.cognixia.jump.djk.firstjavaproject.data.HumanName;
-import com.cognixia.jump.djk.firstjavaproject.display.Divider;
+import com.cognixia.jump.djk.firstjavaproject.display.RecordReporter;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DollarAmountInHandler;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.StringInHandler;
@@ -20,8 +20,8 @@ public class EmployeeAdder {
 	private DollarAmount salary;
 	private Department department;
 	
-	public EmployeeAdder(Department department) {
-		this.department = department;
+	public EmployeeAdder(Executor cancel) {
+		this(null, cancel);
 	}
 	
 	public EmployeeAdder(Department department, Executor cancel) {
@@ -62,7 +62,7 @@ public class EmployeeAdder {
 		Employee newEmployee = new Employee(name, salary, department);
 		Company.addEmployee(newEmployee);
 		department.addEmployee(newEmployee);
-		System.out.println(Divider.get() + "\nNew employee added:\n" + newEmployee);
+		RecordReporter.employees.announceCreationOf(newEmployee);
 		new AnythingInput(next).run();
 	}
 	

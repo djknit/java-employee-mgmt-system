@@ -42,7 +42,7 @@ abstract class SingleDepartmentMenu {
 				System.out.println("Department budget updated.");
 				new AnythingInput(runThis).run();
 			};
-			new DollarsInput("Enter the new name.", handleInput, runThis).run();
+			new DollarsInput("Enter the new budget.", handleInput, runThis).run();
 		}),
 		new MenuOption("Departments Menu", DepartmentsMenu::run),
 		new MenuOption("Main Menu", MainMenu::run)

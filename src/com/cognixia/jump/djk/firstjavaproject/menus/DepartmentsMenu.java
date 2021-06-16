@@ -1,15 +1,12 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
-import java.util.Collection;
-import java.util.stream.Collectors;
-
 import com.cognixia.jump.djk.firstjavaproject.data.Company;
 import com.cognixia.jump.djk.firstjavaproject.data.Department;
 import com.cognixia.jump.djk.firstjavaproject.data.RecordWithId;
 import com.cognixia.jump.djk.firstjavaproject.display.RecordReporter;
 import com.cognixia.jump.djk.firstjavaproject.inputs.AnythingInput;
 import com.cognixia.jump.djk.firstjavaproject.inputs.DepartmentAdder;
-import com.cognixia.jump.djk.firstjavaproject.inputs.IdInput;
+import com.cognixia.jump.djk.firstjavaproject.inputs.RecordSelector;
 
 abstract class DepartmentsMenu {
 	static MenuOption[] options = {
@@ -21,21 +18,16 @@ abstract class DepartmentsMenu {
 			new AnythingInput(DepartmentsMenu::run).run();
 		}),
 		new MenuOption("View/Edit Single Department", () -> {
-			Collection<Department> departments = Company.getDepartments();
-			Collection<RecordWithId> genericizedDepts = departments.stream().collect(Collectors.toList());
-			RecordReporter.departments.printEntities(departments, "Select a Department");
-			if (departments.isEmpty()) {
-				new AnythingInput(DepartmentsMenu::run).run();
-				return;
-			}
-			new IdInput(
-				"Enter the id of a department to select it.",
+			new RecordSelector(
+				"department",
+				DepartmentsMenu::run,
 				(RecordWithId selectedEntity) -> {
 					Department selectedDepartment = (Department) selectedEntity;
 					SingleDepartmentMenu.run(selectedDepartment);
 				},
-				Menus::departments
-			).run(genericizedDepts);
+				"Select a Department",
+				"Enter the id of a department to select it."
+			).selectFrom(Company.getDepartments());
 		}),
 		new MenuOption("Main Menu", Menus::main)
 	};

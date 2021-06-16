@@ -8,8 +8,8 @@ import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.StringInHandl
 public class TextInput {
 	
 	private String prompt;
-	private Executor canceler;
 	private StringInHandler inputHandler;
+	private Executor canceler;
 	
 	public TextInput(String prompt, StringInHandler inputHandler) {
 		this(prompt, inputHandler, null);
@@ -17,8 +17,8 @@ public class TextInput {
 	
 	public TextInput(String prompt, StringInHandler inputHandler, Executor canceler) {
 		this.prompt = prompt;
-		this.canceler = canceler;
 		this.inputHandler = inputHandler;
+		this.canceler = canceler;
 	}
 	
 	public void run() {
