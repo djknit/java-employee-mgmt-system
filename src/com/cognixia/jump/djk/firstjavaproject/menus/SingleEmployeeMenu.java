@@ -1,10 +1,8 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
 import com.cognixia.jump.djk.firstjavaproject.data.Company;
-import com.cognixia.jump.djk.firstjavaproject.data.Department;
 import com.cognixia.jump.djk.firstjavaproject.data.DollarAmount;
 import com.cognixia.jump.djk.firstjavaproject.data.Employee;
-import com.cognixia.jump.djk.firstjavaproject.data.HumanName;
 import com.cognixia.jump.djk.firstjavaproject.display.InputGroupHeader;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DollarAmountInHandler;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
@@ -49,7 +47,8 @@ abstract class SingleEmployeeMenu {
 		new MenuOption("Permanently Delete Employee", () -> {
 			selectedEmployee.getDepartment().removeEmployee(selectedEmployee);
 			Company.removeEmployee(selectedEmployee);
-			MainMenu.run();
+			System.out.println("EMPLOYEE DELETED.");
+			EmployeesMenu.run();
 		}),
 		new MenuOption("Employees Menu", EmployeesMenu::run),
 		new MenuOption("Departments Menu", DepartmentsMenu::run),

@@ -2,6 +2,7 @@ package com.cognixia.jump.djk.firstjavaproject.inputs;
 
 import com.cognixia.jump.djk.firstjavaproject.data.DollarAmount;
 import com.cognixia.jump.djk.firstjavaproject.data.InvalidDollarAmountException;
+import com.cognixia.jump.djk.firstjavaproject.data.InvalidIntException;
 import com.cognixia.jump.djk.firstjavaproject.display.Divider;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DollarAmountInHandler;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
@@ -9,25 +10,20 @@ import com.cognixia.jump.djk.firstjavaproject.InputScanner;
 
 public class DollarsInput {
 
-	private static String divider = "\n";
-	
-	private String prompt;
-	private Executor canceler = null;
-	private DollarAmountInHandler inputHandler;
 	private final static String RETRY_PROMPT = 
 			"Unable to process input. Please enter a positive whole number.";
 	
-	static {
-		for (int i = 0; i < 42; i++) divider += "-";
-	}
+	private String prompt;
+	private DollarAmountInHandler inputHandler;
+	private Executor canceler;
 	
 	public DollarsInput(String prompt, DollarAmountInHandler inputHandler) {
-		this.prompt = prompt;
-		this.inputHandler = inputHandler;
+		this(prompt, inputHandler, null);
 	}
 	
 	public DollarsInput(String prompt, DollarAmountInHandler inputHandler, Executor canceler) {
-		this(prompt, inputHandler);
+		this.prompt = prompt;
+		this.inputHandler = inputHandler;
 		this.canceler = canceler;
 	}
 	
@@ -41,15 +37,18 @@ public class DollarsInput {
 		System.out.print(InputScanner.getLinePreface() + "$ ");
 		try {
 			int input = InputScanner.getIntInput(false);
-			if (input < 0) tryAgain();
+			if (input < 0) {
+				throw new InvalidDollarAmountException();
+			}
 			else inputHandler.handleInput(new DollarAmount(input));
 		} catch(InvalidDollarAmountException e) {
 			tryAgain();
-			return;
-		} catch(Exception e) {
+		} catch(InvalidIntException e) {
 			boolean isB = InputScanner.getInput().trim().toLowerCase().equals("b");
 			if (isB && (canceler != null)) canceler.execute();
 			else tryAgain();
+		} catch(Exception e) {
+			tryAgain();
 		}
 	}
 	

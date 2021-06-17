@@ -7,7 +7,11 @@ public class MainDriver {
 
 	public static void main(String[] args) {
 		Greeting.run();
-		// <retrieve saved object data (optional)>
+		/* TO DO:
+		 * 
+		 * retrieve saved object data
+		 * 
+		 * */
 		Menus.main();
 		InputScanner.close();
 		Greeting.runGoodbye();
