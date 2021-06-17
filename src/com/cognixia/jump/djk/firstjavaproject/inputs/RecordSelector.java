@@ -14,34 +14,8 @@ public class RecordSelector {
 	private String prompt;
 	private RecordReporter reporter;
 	private DataRecordInHandler handleSelection;
-	
-	public RecordSelector(
-		String entityTypeName,
-		Executor cancel,
-		DataRecordInHandler handleInput
-	) {
-		this(
-			entityTypeName,
-			cancel,
-			handleInput,
-			getDefaultPrompt(entityTypeName)
-		);
-	}
-	
-	public RecordSelector(
-		String entityTypeName,
-		Executor cancel,
-		DataRecordInHandler handleInput,
-		String prompt
-	) {
-		this(
-			entityTypeName,
-			cancel,
-			handleInput,
-			"Select " + getCapName(entityTypeName),
-			getDefaultPrompt(entityTypeName)
-		);
-	}
+	private Executor handleEmptyCollection;
+	private String emptyCollectionStatement;
 	
 	public RecordSelector(
 		String entityTypeName,
@@ -50,13 +24,27 @@ public class RecordSelector {
 		String title,
 		String prompt
 	) {
+		this(entityTypeName, cancel, handleSelection, title, prompt, cancel, null);
+	}
+	
+	public RecordSelector(
+		String entityTypeName,
+		Executor cancel,
+		DataRecordInHandler handleSelection,
+		String title,
+		String prompt,
+		Executor handleEmpty,
+		String emptyStatement
+	) {
 		reporter = entityTypeName == "department" ?
 				RecordReporter.departments :
 				RecordReporter.employees; 
 		this.cancel = cancel;
+		this.handleEmptyCollection = handleEmpty;
 		this.handleSelection = handleSelection;
 		this.title = title;
 		this.prompt = prompt;
+		this.emptyCollectionStatement = emptyStatement;
 	}
 	
 	public void selectFrom(
@@ -66,18 +54,21 @@ public class RecordSelector {
 		Collection<RecordWithId> entities = (Collection<RecordWithId>) wildCardCollection;
 		reporter.printEntities(entities, title);
 		if (entities.isEmpty()) {
-			new AnythingInput(cancel).run();
+			if (emptyCollectionStatement != null) {
+				System.out.println("\n" + emptyCollectionStatement);
+			}
+			new AnythingInput(handleEmptyCollection).run();
 			return;
 		}
 		new IdInput(prompt, handleSelection, cancel).run(entities);
 	}
 	
-	private static final String getCapName(String entityTypeName) {
-		return entityTypeName.substring(0, 1).toUpperCase() + entityTypeName.substring(1);
-	}
-	
-	private static final String getDefaultPrompt(String entityTypeName) {
-		return "Enter the id of the " + entityTypeName + " to select.";
-	}
+//	private static final String getCapName(String entityTypeName) {
+//		return entityTypeName.substring(0, 1).toUpperCase() + entityTypeName.substring(1);
+//	}
+//	
+//	private static final String getDefaultPrompt(String entityTypeName) {
+//		return "Enter the id of the " + entityTypeName + " to select.";
+//	}
 	
 }

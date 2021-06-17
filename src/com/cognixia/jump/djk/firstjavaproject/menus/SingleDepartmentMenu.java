@@ -2,6 +2,7 @@ package com.cognixia.jump.djk.firstjavaproject.menus;
 
 import com.cognixia.jump.djk.firstjavaproject.data.Department;
 import com.cognixia.jump.djk.firstjavaproject.data.DollarAmount;
+import com.cognixia.jump.djk.firstjavaproject.display.Divider;
 import com.cognixia.jump.djk.firstjavaproject.display.InputGroupHeader;
 import com.cognixia.jump.djk.firstjavaproject.display.RecordReporter;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DollarAmountInHandler;
@@ -23,7 +24,7 @@ abstract class SingleDepartmentMenu {
 			new AnythingInput(SingleDepartmentMenu::run).run();
 		}),
 		new MenuOption("Add New Employee", () -> {
-			InputGroupHeader.print(selectedDepartment + "\nAdd Employee");
+			InputGroupHeader.print(selectedDepartment + "\n" + Divider.get() + "\nAdd Employee");
 			new EmployeeAdder(selectedDepartment, SingleDepartmentMenu::run).run();
 		}),
 		new MenuOption("Change Department Name", () -> {

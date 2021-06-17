@@ -25,10 +25,6 @@ public class DollarAmount {
 		return new DollarAmount(dollarAmt1.getAmount() + dollarAmt2.getAmount());
 	}
 	
-//	public void add(DollarAmount dollarAmt2) throws InvalidDollarAmountException, Exception {
-//		setAmount(amount + dollarAmt2.getAmount());
-//	}
-	
 	public int getAmount() {
 		return amount;
 	}

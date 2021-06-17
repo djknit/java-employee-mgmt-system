@@ -47,7 +47,8 @@ abstract class SingleEmployeeMenu {
 		new MenuOption("Permanently Delete Employee", () -> {
 			selectedEmployee.getDepartment().removeEmployee(selectedEmployee);
 			Company.removeEmployee(selectedEmployee);
-			MainMenu.run();
+			System.out.println("EMPLOYEE DELETED.");
+			EmployeesMenu.run();
 		}),
 		new MenuOption("Employees Menu", EmployeesMenu::run),
 		new MenuOption("Departments Menu", DepartmentsMenu::run),

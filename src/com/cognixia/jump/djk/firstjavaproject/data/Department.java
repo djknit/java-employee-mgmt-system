@@ -59,7 +59,7 @@ public class Department extends RecordWithId {
 
 	@Override
 	public String toString() {
-		return "[ id=" + id + " | name=\"" + name + "\" | budget=" + budget + " | employees=" +  employees.size() + " ]";
+		return "Dept. [ id=" + id + " | name=\"" + name + "\" | budget=" + budget + " | employees=" +  employees.size() + " ]";
 	}
 	
 }

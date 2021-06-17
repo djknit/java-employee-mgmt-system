@@ -1,6 +1,9 @@
 package com.cognixia.jump.djk.firstjavaproject;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import com.cognixia.jump.djk.firstjavaproject.data.InvalidIntException;
 
 public class InputScanner {
 	
@@ -14,7 +17,7 @@ public class InputScanner {
 		return " >> ";
 	}
 	
-	public static int getIntInput() throws Exception {
+	public static int getIntInput() throws InvalidIntException, Exception {
 		return getIntInput(true);
 	}
 	
@@ -22,6 +25,9 @@ public class InputScanner {
 		try {
 			int intInput = SCANNER.nextInt();
 			return intInput;
+		} catch(InputMismatchException e) {
+			if (shouldAdvanceInputOnFail) SCANNER.next();
+			throw new InvalidIntException(e);
 		} catch(Exception e) {
 			if (shouldAdvanceInputOnFail) SCANNER.next();
 			throw e;

@@ -2,6 +2,7 @@ package com.cognixia.jump.djk.firstjavaproject.inputs;
 
 import com.cognixia.jump.djk.firstjavaproject.data.DollarAmount;
 import com.cognixia.jump.djk.firstjavaproject.data.InvalidDollarAmountException;
+import com.cognixia.jump.djk.firstjavaproject.data.InvalidIntException;
 import com.cognixia.jump.djk.firstjavaproject.display.Divider;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DollarAmountInHandler;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
@@ -36,15 +37,18 @@ public class DollarsInput {
 		System.out.print(InputScanner.getLinePreface() + "$ ");
 		try {
 			int input = InputScanner.getIntInput(false);
-			if (input < 0) tryAgain();
+			if (input < 0) {
+				throw new InvalidDollarAmountException();
+			}
 			else inputHandler.handleInput(new DollarAmount(input));
 		} catch(InvalidDollarAmountException e) {
 			tryAgain();
-			return;
-		} catch(Exception e) {
+		} catch(InvalidIntException e) {
 			boolean isB = InputScanner.getInput().trim().toLowerCase().equals("b");
 			if (isB && (canceler != null)) canceler.execute();
 			else tryAgain();
+		} catch(Exception e) {
+			tryAgain();
 		}
 	}
 	

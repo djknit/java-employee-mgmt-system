@@ -1,6 +1,5 @@
 package com.cognixia.jump.djk.firstjavaproject.inputs;
 
-import com.cognixia.jump.djk.firstjavaproject.data.InvalidDollarAmountException;
 import com.cognixia.jump.djk.firstjavaproject.data.RecordWithId;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.DataRecordInHandler;
 import com.cognixia.jump.djk.firstjavaproject.functionalInterfaces.Executor;
@@ -19,13 +18,9 @@ class IdInput {
 			"Unable to process input. Please enter a valid id (or \"0\" or \"b\").";
 	private Collection<RecordWithId> entities;
 	
-	IdInput(String prompt, DataRecordInHandler inputHandler) {
+	IdInput(String prompt, DataRecordInHandler inputHandler, Executor canceler) {
 		this.prompt = prompt;
 		this.inputHandler = inputHandler;
-	}
-	
-	IdInput(String prompt, DataRecordInHandler inputHandler, Executor canceler) {
-		this(prompt, inputHandler);
 		this.canceler = canceler;
 	}
 	
@@ -47,9 +42,6 @@ class IdInput {
 				if (entity.isPresent()) inputHandler.handleInput(entity.get());
 				else tryAgain();
 			}
-		} catch(InvalidDollarAmountException e) {
-			tryAgain();
-			return;
 		} catch(Exception e) {
 			boolean isB = InputScanner.getInput().trim().toLowerCase().equals("b");
 			if (isB && (canceler != null)) canceler.execute();
