@@ -62,7 +62,7 @@ abstract class SingleEmployeeMenu {
 	
 	static void run() {
 		String heading = "EMPLOYEE SELECTED:\n\n " + selectedEmployee;
-		new Menu(options, heading, false).run();
+		new Menu(options, heading, true).run();
 	}
 	
 }

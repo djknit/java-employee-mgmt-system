@@ -1,6 +1,6 @@
 package com.cognixia.jump.djk.firstjavaproject.menus;
 
-abstract public class MainMenu {
+abstract class MainMenu {
 	
 	static MenuOption[] options = {
 		new MenuOption("Employees", () -> {

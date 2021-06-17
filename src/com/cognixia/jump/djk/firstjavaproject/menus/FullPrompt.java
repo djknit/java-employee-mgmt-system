@@ -8,12 +8,6 @@ class FullPrompt {
 	private String name;
 	private String prompt;
 
-	FullPrompt(MenuOption[] options, String menuName, String prompt) {
-		this.options = options;
-		this.name = menuName.toUpperCase();
-		this.prompt = prompt;
-	}
-
 	FullPrompt(MenuOption[] options, String menuName, String prompt, boolean leaveCase) {
 		this.options = options;
 		this.name = leaveCase ? menuName : menuName.toUpperCase();

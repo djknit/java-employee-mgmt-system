@@ -4,42 +4,23 @@ import com.cognixia.jump.djk.firstjavaproject.InputScanner;
 
 class Menu {
 	
-	private static final String DEFAULT_NAME = "Menu";
 	private static final String DEFAULT_PROMPT =
 			"Enter the corresponding number to select an option:";
 
 	private MenuOption[] options;
 	private FullPrompt fullPrompt = null;
 	
-	Menu(MenuOption[] options) {
-		this(options, DEFAULT_NAME);
-	}
-	
 	Menu(MenuOption[] options, String name) {
-		this(options, name, DEFAULT_PROMPT);
+		this(options, name, false);
 	}
 	
 	Menu(MenuOption[] options, String name, boolean leaveNameCase) {
-		this(options, name, DEFAULT_PROMPT, leaveNameCase);
-	}
-
-	Menu(MenuOption[] options, String name, String prompt) {
-		this(options, name, prompt, false);
-	}
-	
-	Menu(MenuOption[] options, String name, String prompt, boolean leaveNameCase) {
 		this.options = new MenuOption[options.length + 1];
-		this.options[0] = new EndProgramMenuOption();
+		this.options[0] = new MenuOption("Exit Program", () -> {});
 		for (int i = 0; i < options.length; i++) {
 			this.options[i + 1] = options[i];
 		}
-		this.fullPrompt = new FullPrompt(this.options, name, prompt, leaveNameCase);
-	}
-	
-	private class EndProgramMenuOption extends MenuOption {
-		EndProgramMenuOption() {
-			super("Exit Program", () -> {});
-		}
+		this.fullPrompt = new FullPrompt(this.options, name, DEFAULT_PROMPT, leaveNameCase);
 	}
 	
 	final void run() {
