@@ -56,6 +56,6 @@ abstract class SingleDepartmentMenu {
 	
 	static void run() {
 		String heading = "DEPARTMENT SELECTED:\n\n " + selectedDepartment;
-		new Menu(options, heading, false).run();
+		new Menu(options, heading, true).run();
 	}
 }

@@ -20,10 +20,6 @@ public class EmployeeAdder {
 	private DollarAmount salary;
 	private Department department;
 	
-	public EmployeeAdder(Executor cancel) {
-		this(null, cancel);
-	}
-	
 	public EmployeeAdder(Department department, Executor cancel) {
 		this.department = department;
 		this.cancel = cancel;

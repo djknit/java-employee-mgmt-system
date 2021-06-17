@@ -8,6 +8,7 @@ public class RecordReporter {
 	
 	public static final RecordReporter departments = new RecordReporter("department");
 	public static final RecordReporter employees = new RecordReporter("employee");
+
 	private String entityTypeName;
 	
 	private RecordReporter(String entityTypeName) {
