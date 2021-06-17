@@ -15,6 +15,7 @@ class Menu {
 	}
 	
 	Menu(MenuOption[] options, String name, boolean leaveNameCase) {
+		this.options = new MenuOption[options.length + 1];
 		this.options[0] = new MenuOption("Exit Program", () -> {});
 		for (int i = 0; i < options.length; i++) {
 			this.options[i + 1] = options[i];
