@@ -1,11 +1,13 @@
 package com.cognixia.jump.djk.firstjavaproject.data;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Department extends RecordWithId {
+public class Department extends RecordWithId implements Serializable {
 
-	private static int nextId = 1;
+	private static final long serialVersionUID = -5518809591691140364L;
+	private static ObjIdGenerator idGenerator = new ObjIdGenerator();
 	
 	private int id;
 	private String name;
@@ -19,7 +21,7 @@ public class Department extends RecordWithId {
 	public Department(String name, DollarAmount budget) {
 		this.name = name;
 		this.budget = budget;
-		this.id = nextId++;
+		this.id = idGenerator.getNextId();
 	}
 	
 	public String getName() {
@@ -50,6 +52,14 @@ public class Department extends RecordWithId {
 	
 	public Set<Employee> getEmployees() {
 		return employees;
+	}
+	
+	static void reportGreatestId(int highestReservedId) {
+		idGenerator.setGreatestId(highestReservedId);
+	}
+	
+	int getId() {
+		return id;
 	}
 	
 	@Override
