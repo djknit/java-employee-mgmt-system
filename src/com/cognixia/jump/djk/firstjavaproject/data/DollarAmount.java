@@ -1,10 +1,12 @@
 package com.cognixia.jump.djk.firstjavaproject.data;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class DollarAmount {
+public class DollarAmount implements Serializable {
 	
+	private static final long serialVersionUID = -3345047498511845421L;
 	private int amount;
 	
 	public DollarAmount() {

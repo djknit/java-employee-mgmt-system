@@ -1,9 +1,15 @@
 package com.cognixia.jump.djk.firstjavaproject.data;
 
-public class Employee extends RecordWithId {
-	// source: Cognixia Java JUMP program in-class demonstration (/3/21)
+import java.io.Serializable;
 
-	private static int nextId = 1;
+public class Employee extends RecordWithId implements Serializable {
+	/**
+	 *  source (starting point for this class): Cognixia Java JUMP program in-class demonstration (6/3/21)
+	 */
+
+	private static final long serialVersionUID = 3112344517626593099L;
+	private static ObjIdGenerator idGenerator = new ObjIdGenerator();
+	
 	private int id;
 	private HumanName name;
 	private DollarAmount salary;
@@ -17,7 +23,7 @@ public class Employee extends RecordWithId {
 		setName(name);
 		this.salary = salary;		
 		this.department = department;
-		this.id = nextId++;
+		this.id = idGenerator.getNextId();
 	}
 
 	public HumanName getName() {
@@ -50,6 +56,14 @@ public class Employee extends RecordWithId {
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+	
+	static void reportGreatestId(int highestReservedId) {
+		idGenerator.setGreatestId(highestReservedId);;
+	}
+	
+	int getId() {
+		return id;
 	}
 	
 	@Override

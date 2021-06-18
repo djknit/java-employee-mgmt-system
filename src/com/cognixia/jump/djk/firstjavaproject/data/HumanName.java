@@ -1,7 +1,13 @@
 package com.cognixia.jump.djk.firstjavaproject.data;
 
-public class HumanName {
+import java.io.Serializable;
+
+public class HumanName implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7728354997313933615L;
 	private String first;
 	private String last;
 	
